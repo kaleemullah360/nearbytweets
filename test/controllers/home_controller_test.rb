@@ -5,10 +5,4 @@ class HomeControllerTest < ActionController::TestCase
     get :show
     assert_response :success
   end
-
-test "Object found" do 
-
-    assert @search_results
-end
-
 end
