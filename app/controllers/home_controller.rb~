@@ -1,34 +1,25 @@
-class Api::MapController < ApplicationController
-  def new
-  end
-
+class HomeController < ApplicationController
   def show
+    
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = "5maOMf0e7yo0ZflLEgZ9dmJqu"
       config.consumer_secret     = "sTbUJXXB7LSoXFdqweq0wdCRHIZT9c8iUEycBZiLGZLnnXl4cK"
       config.access_token        = "1165244072-gZkDNmKpoPPtWLHgpBU1ft63eSHhPvbChzRHNEi"
       config.access_token_secret = "6kvKeApsPoNzB39icD3V1Oyz4lVcLxN6xTUpAlLWUGTuh"
     end
-
+      
     #center: {lat: -34.397, lng: 150.644}, 
-    latitude = params[:lat]
-    longitude = params[:lng]
+    longitude = -34.397
+    latitude = 150.644
 
-    #str = '31.515181,74.345034,100km'
-    str = "#{latitude.to_s},#{longitude.to_s},100km"
+    str = "#{longitude.to_s},#{latitude.to_s},100km"
+   # str = '31.515181,74.345034,100km'
 
-    @search_results = client.search( '', geocode: str ).take(100)
+    @search_results = client.search( '', geocode: str ).take(100).each do |tweet|
+    end
+    #puts @search_results
 
-    render json: @search_results
+    #render json: @search_results
  end
 
-
-  def delete
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 end

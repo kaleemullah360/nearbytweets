@@ -6,4 +6,9 @@ class HomeControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+test "Object found" do 
+
+    assert @search_results
+end
+
 end
